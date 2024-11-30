@@ -1,34 +1,59 @@
-Structure et Organisation
+# TODO List for Blockchain and Web3 Quiz App
 
+## High Priority
 
-Ajouter un dossier types ou interfaces pour centraliser les types TypeScript communs
-Créer un dossier constants pour les valeurs constantes réutilisables
-Ajouter un dossier config pour centraliser les configurations (API, env, etc.)
-Potentiellement ajouter un dossier services pour les services externes
+- [ ] Implement error handling for API routes
+- [ ] Add loading states and error messages in the UI
+- [ ] Optimize scraping performance
+- [ ] Implement caching mechanism for scraped data
+- [ ] Add unit tests for core functionality
 
+## Medium Priority
 
-Dépendances
+- [ ] Implement a point system or virtual tokens for correct answers
+- [ ] Create a virtual wallet to track user progress
+- [ ] Add a leaderboard for competitive quizzing
+- [ ] Implement animations for correct answers (e.g., simulating "mining")
+- [ ] Add difficulty levels for questions
 
+## Low Priority
 
-Ajouter @hookform/resolvers pour la validation des formulaires avec Zod
-Intégrer next-themes pour une meilleure gestion du dark mode
-Considérer date-fns ou dayjs pour la manipulation des dates
-Éventuellement ajouter react-hot-toast ou sonner pour les notifications
+- [ ] Implement user authentication
+- [ ] Add support for multiple languages
+- [ ] Create a mobile app version (React Native)
+- [ ] Implement a spaced repetition algorithm for term review
 
+## UI/UX Improvements
 
-Configuration
+- [ ] Enhance the design of the term list for better readability
+- [ ] Add dark mode support
+- [ ] Improve accessibility (e.g., keyboard navigation, screen reader support)
+- [ ] Add more blockchain-themed visual elements
 
+## Feature Ideas
 
-Ajouter un .env.example
-Configurer commitlint pour standardiser les messages de commit
-Ajouter tsconfig.paths.json pour une meilleure gestion des alias
-Mettre en place un docker-compose.yml basique
+- [ ] Implement a daily challenge feature
+- [ ] Add a "create your own quiz" functionality for users
+- [ ] Integrate with Web3 wallets for a more authentic blockchain experience
+- [ ] Implement a referral system using blockchain concepts
 
+## Technical Debt
 
-Tests
+- [ ] Refactor QuizApp component to reduce complexity
+- [ ] Improve type safety throughout the application
+- [ ] Optimize bundle size
+- [ ] Set up continuous integration and deployment (CI/CD)
 
+## Documentation
 
-Ajouter des tests exemples pour chaque couche
-Configurer msw pour mocker les appels API dans les tests
-Ajouter cypress pour les tests E2E
-Mettre en place playwright pour les tests de navigation
+- [ ] Create API documentation
+- [ ] Write contributing guidelines
+- [ ] Add inline code comments for complex logic
+
+## Blockchain Integration Ideas
+
+- [ ] Use IPFS for storing and retrieving definitions
+- [ ] Implement a simple smart contract for tracking user achievements
+- [ ] Create non-fungible tokens (NFTs) for completed quizzes or milestones
+
+Remember to prioritize tasks based on project goals and user feedback. Regularly review and update this TODO list as the project evolves.
