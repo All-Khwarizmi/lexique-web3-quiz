@@ -1,3 +1,5 @@
+"use client";
+
 import { useState, useEffect } from "react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -70,13 +72,13 @@ export default function QuizApp() {
   };
 
   return (
-    <div className="w-full max-w-4xl p-4 space-y-4">
+    <div className="w-full max-w-4xl p-2 sm:p-4 space-y-4">
       <Card className="w-full bg-gradient-to-br from-purple-500 to-blue-600 dark:from-purple-700 dark:to-blue-800 text-white">
         <CardHeader>
-          <CardTitle className="text-3xl font-bold text-center flex items-center justify-center">
-            <Sparkles className="mr-2" />
+          <CardTitle className="text-xl sm:text-3xl font-bold text-center flex items-center justify-center">
+            <Sparkles className="mr-2 h-5 w-5 sm:h-6 sm:w-6" />
             Quiz Blockchain et Web3
-            <Sparkles className="ml-2" />
+            <Sparkles className="ml-2 h-5 w-5 sm:h-6 sm:w-6" />
           </CardTitle>
         </CardHeader>
       </Card>
@@ -84,14 +86,14 @@ export default function QuizApp() {
       <Tabs defaultValue="quiz" className="w-full">
         <TabsList className="grid w-full grid-cols-3">
           <TabsTrigger value="quiz">Quiz</TabsTrigger>
-          <TabsTrigger value="terms">Liste des termes</TabsTrigger>
+          <TabsTrigger value="terms">Termes</TabsTrigger>
           <TabsTrigger value="history">Historique</TabsTrigger>
         </TabsList>
 
         <TabsContent value="quiz">
           <Card className="bg-background dark:bg-gray-800">
             <CardHeader>
-              <CardTitle className="text-2xl font-bold text-center">
+              <CardTitle className="text-lg sm:text-2xl font-bold text-center">
                 {isLoading ? "Chargement..." : currentTerm?.term}
               </CardTitle>
             </CardHeader>
@@ -107,30 +109,49 @@ export default function QuizApp() {
                 />
                 {showAnswer && currentTerm && (
                   <div className="mt-4 p-4 bg-secondary dark:bg-gray-700 rounded-md">
-                    <h3 className="font-semibold text-lg mb-2">Définition :</h3>
-                    <p className="text-secondary-foreground dark:text-gray-300">
+                    <h3 className="font-semibold text-base sm:text-lg mb-2">
+                      Définition :
+                    </h3>
+                    <p className="text-secondary-foreground dark:text-gray-300 text-sm sm:text-base">
                       {currentTerm.definition}
                     </p>
                   </div>
                 )}
                 {showAnswer && (
                   <div className="space-y-2">
-                    <p className="font-semibold">Évaluez votre confiance :</p>
+                    <p className="font-semibold text-sm sm:text-base">
+                      Évaluez votre confiance :
+                    </p>
                     <Progress value={confidence} className="w-full" />
-                    <div className="flex justify-between">
-                      <Button onClick={() => handleConfidenceRating(0)}>
+                    <div className="flex flex-wrap justify-between gap-2">
+                      <Button
+                        onClick={() => handleConfidenceRating(0)}
+                        size="sm"
+                      >
                         0%
                       </Button>
-                      <Button onClick={() => handleConfidenceRating(25)}>
+                      <Button
+                        onClick={() => handleConfidenceRating(25)}
+                        size="sm"
+                      >
                         25%
                       </Button>
-                      <Button onClick={() => handleConfidenceRating(50)}>
+                      <Button
+                        onClick={() => handleConfidenceRating(50)}
+                        size="sm"
+                      >
                         50%
                       </Button>
-                      <Button onClick={() => handleConfidenceRating(75)}>
+                      <Button
+                        onClick={() => handleConfidenceRating(75)}
+                        size="sm"
+                      >
                         75%
                       </Button>
-                      <Button onClick={() => handleConfidenceRating(100)}>
+                      <Button
+                        onClick={() => handleConfidenceRating(100)}
+                        size="sm"
+                      >
                         100%
                       </Button>
                     </div>
@@ -138,15 +159,20 @@ export default function QuizApp() {
                 )}
               </div>
             </CardContent>
-            <CardFooter className="flex justify-between">
+            <CardFooter className="flex flex-col sm:flex-row justify-between gap-2">
               <Button
                 onClick={() => setShowAnswer(true)}
                 variant="outline"
                 disabled={isLoading}
+                className="w-full sm:w-auto"
               >
                 Voir la réponse
               </Button>
-              <Button onClick={() => fetchTerm()} disabled={isLoading}>
+              <Button
+                onClick={() => fetchTerm()}
+                disabled={isLoading}
+                className="w-full sm:w-auto"
+              >
                 Terme suivant
               </Button>
             </CardFooter>
@@ -156,7 +182,9 @@ export default function QuizApp() {
         <TabsContent value="terms">
           <Card className="bg-background dark:bg-gray-800">
             <CardHeader>
-              <CardTitle>Liste des termes</CardTitle>
+              <CardTitle className="text-lg sm:text-2xl">
+                Liste des termes
+              </CardTitle>
             </CardHeader>
             <CardContent>
               <TermList
@@ -170,7 +198,7 @@ export default function QuizApp() {
         <TabsContent value="history">
           <Card className="bg-background dark:bg-gray-800">
             <CardHeader>
-              <CardTitle>Historique</CardTitle>
+              <CardTitle className="text-lg sm:text-2xl">Historique</CardTitle>
             </CardHeader>
             <CardContent>
               <div className="h-[300px] w-full rounded-md border p-4 overflow-y-auto">
@@ -179,8 +207,10 @@ export default function QuizApp() {
                     key={index}
                     className="mb-4 p-2 border-b dark:border-gray-700"
                   >
-                    <h3 className="font-semibold">{item.term}</h3>
-                    <p className="text-sm text-gray-600 dark:text-gray-400">
+                    <h3 className="font-semibold text-sm sm:text-base">
+                      {item.term}
+                    </h3>
+                    <p className="text-xs sm:text-sm text-gray-600 dark:text-gray-400">
                       Confiance : {item.confidence}%
                     </p>
                   </div>
