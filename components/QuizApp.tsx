@@ -1,5 +1,3 @@
-"use client";
-
 import { useState, useEffect } from "react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -14,7 +12,6 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { TermList } from "./TermList";
 import { Progress } from "@/components/ui/progress";
 import { Sparkles } from "lucide-react";
-import { ScrollArea } from "./ui/scroll-area";
 
 interface TermDefinition {
   term: string;
@@ -74,7 +71,7 @@ export default function QuizApp() {
 
   return (
     <div className="w-full max-w-4xl p-4 space-y-4">
-      <Card className="w-full bg-gradient-to-br from-purple-500 to-blue-600 text-white">
+      <Card className="w-full bg-gradient-to-br from-purple-500 to-blue-600 dark:from-purple-700 dark:to-blue-800 text-white">
         <CardHeader>
           <CardTitle className="text-3xl font-bold text-center flex items-center justify-center">
             <Sparkles className="mr-2" />
@@ -92,7 +89,7 @@ export default function QuizApp() {
         </TabsList>
 
         <TabsContent value="quiz">
-          <Card>
+          <Card className="bg-background dark:bg-gray-800">
             <CardHeader>
               <CardTitle className="text-2xl font-bold text-center">
                 {isLoading ? "Chargement..." : currentTerm?.term}
@@ -109,9 +106,9 @@ export default function QuizApp() {
                   disabled={isLoading}
                 />
                 {showAnswer && currentTerm && (
-                  <div className="mt-4 p-4 bg-secondary rounded-md">
+                  <div className="mt-4 p-4 bg-secondary dark:bg-gray-700 rounded-md">
                     <h3 className="font-semibold text-lg mb-2">Définition :</h3>
-                    <p className="text-secondary-foreground">
+                    <p className="text-secondary-foreground dark:text-gray-300">
                       {currentTerm.definition}
                     </p>
                   </div>
@@ -157,7 +154,7 @@ export default function QuizApp() {
         </TabsContent>
 
         <TabsContent value="terms">
-          <Card>
+          <Card className="bg-background dark:bg-gray-800">
             <CardHeader>
               <CardTitle>Liste des termes</CardTitle>
             </CardHeader>
@@ -171,21 +168,24 @@ export default function QuizApp() {
         </TabsContent>
 
         <TabsContent value="history">
-          <Card>
+          <Card className="bg-background dark:bg-gray-800">
             <CardHeader>
               <CardTitle>Historique</CardTitle>
             </CardHeader>
             <CardContent>
-              <ScrollArea className="h-[300px] w-full rounded-md border p-4">
+              <div className="h-[300px] w-full rounded-md border p-4 overflow-y-auto">
                 {history.map((item, index) => (
-                  <div key={index} className="mb-4 p-2 border-b">
+                  <div
+                    key={index}
+                    className="mb-4 p-2 border-b dark:border-gray-700"
+                  >
                     <h3 className="font-semibold">{item.term}</h3>
-                    <p className="text-sm text-gray-600">
+                    <p className="text-sm text-gray-600 dark:text-gray-400">
                       Confiance : {item.confidence}%
                     </p>
                   </div>
                 ))}
-              </ScrollArea>
+              </div>
             </CardContent>
           </Card>
         </TabsContent>
